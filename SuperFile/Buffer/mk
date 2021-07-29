@@ -1,0 +1,6 @@
+#!/bin/bash
+
+clear
+g++ Buffer.cc -oa.exe
+
+./a.exe
