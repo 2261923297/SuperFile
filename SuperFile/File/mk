@@ -1,0 +1,7 @@
+#!/bin/bash
+
+clear
+g++ TFile.cc -o a
+
+./a
+

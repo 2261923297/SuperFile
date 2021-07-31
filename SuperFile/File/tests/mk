@@ -1,0 +1,7 @@
+#!/bin/bash
+
+clear
+g++ test_windowsapi.cc \
+-o ./bin/winapi.exe
+
+./bin/winapi.exe
