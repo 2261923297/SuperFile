@@ -33,7 +33,31 @@ public:
 	}
 
 	int createDir(const char* path) override {
-		return _mkdir(path);
+		std::string str_path = path;
+		formateDirName(str_path);
+		std::vector<std::string> v_dirs;
+		
+		int beg = 3, len = 0;
+		std::string cur_dir_name;
+		if(str_path.size() < beg + 1) {
+			std::cout << "dir_format err!" << std::endl;
+		}
+		for(int size_t i = beg + 1; i < str_path.size(); i++) {
+			if(str_path[i] == DIR_SEPARATOR) {
+				len = i - beg;
+				cur_dir_name = str_path.substr(beg, len);
+				beg = i + 1;
+
+				std::cout << "cur_dir_name = " << cur_dir_name << std::endl;
+				v_dirs.push_back(cur_dir_name);
+			}
+		}
+		int mkdirRes = 0;
+		std::string dirs
+		while( -1 != mkdirRes) {
+
+			mkdirRes = _mkdir()
+		}
 	}
 
 	std::vector<std::string> getNamesUnderDir() override {
@@ -47,8 +71,7 @@ public:
 			std::cout << "getNamesUndjerDir: dirCmd = " << m_path; 
 			
 			k = HANDLE = _findfirst(m_path.c_str(), &file);	
-			while (k != -1)
-			{
+			while (k != -1) {
 				subNames.push_back(std::string(file.name));
 				k = _findnext(HANDLE, &file);
 			}
