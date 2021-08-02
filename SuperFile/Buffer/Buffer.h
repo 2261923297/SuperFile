@@ -59,10 +59,3 @@ private:
 
 };
 
-int main() {
-	Buffer bf(1024);
-
-	bf.showData();
-	return 0;
-
-}

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+clear
+g++ TFile.cc -o ./tests/bin/TWinFile.exe
+
+
+./tests/bin/TWinFile.exe
+

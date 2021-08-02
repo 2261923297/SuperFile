@@ -1,0 +1,17 @@
+#!/bin/bash
+
+clear
+g++ server.cc \
+	../TNet.cc \
+-l ws2_32 \
+-o ./bin/server.exe \
+-std=c++11
+
+clear
+g++ client.cc \
+	../TNet.cc \
+-l ws2_32 \
+-o ./bin/client.exe \
+-std=c++11
+
+
