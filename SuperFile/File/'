@@ -1,7 +1,5 @@
-
 #include "TFile.h"
 #include "platforms/win_file/WinFile.h"
-#include <direct.h>
 #include <memory>
 #include <string>
 #include <vector>
@@ -36,7 +34,7 @@ public:
 
 	int createDir(const char* path) override {
 		std::string str_path = path;
-		formateDirName(str_path);          // end must '\'
+		formateDirName(str_path);
 		std::vector<std::string> v_dirs;
 		
 		int beg = 3, len = 0;
@@ -55,18 +53,10 @@ public:
 			}
 		}
 		int mkdirRes = 0;
-		std::string dirs = str_path.substr(3);
+		std::string dirs;
 		while( -1 != mkdirRes) {
-			dirs += v_dirs.front();
-			v_dirs.pop_front();
-			
-			mkdirRes = 0;'
-			if(-1 == _access(dirs.c_str())) {
-				mkdirRes = _mkdir(dirs.c_str());
-			}
-			else {
-				std::cout << "dir: " << dirs.c_str();
-			}
+
+			mkdirRes = _mkdir()
 		}
 	}
 
