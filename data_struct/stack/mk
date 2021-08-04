@@ -1,0 +1,6 @@
+#!/bin/bash
+
+clear
+g++ stack.cc -o stack.exe 
+
+./stack.exe
