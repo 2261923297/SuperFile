@@ -21,18 +21,18 @@ public:
 
 	}
 
-	virtual int isExit();
+	virtual int isExit() = 0;
 
-	virtual int isDir();
+	virtual int isDir() = 0;
 
-	virtual int createFile(const char* path);
+	virtual int createFile(const char* path) = 0;
 
-	virtual int createDir(const char* path);
+	virtual int createDir(const char* path) = 0;
 
-	virtual std::vector<std::string> getNamesUnderDir();
+	virtual std::vector<std::string> getNamesUnderDir() = 0;
 	
 	//end must '/'
-	virtual int formateDirName(std::string& dirPath);
+	virtual int formateDirName(std::string& dirPath) = 0;
 
 
 protected:

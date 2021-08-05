@@ -1,0 +1,7 @@
+#!/bin/bash
+
+clear
+g++ ../../platforms/win_file/WinFile.cc test_base.cc ../../TWinFile.cc -o ../bin/test_base.exe
+
+../bin/test_base.exe
+

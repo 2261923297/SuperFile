@@ -20,10 +20,11 @@ WinFile::FileData_t WinFile::GetFileData(const char* path) {
 	
 	int k;
 	long f_handle;
+	std::cout << "WinFile::GetFileData: " << path << std::endl;
 	k = f_handle = _findfirst(path, &file_data);
 	ShowFileData(file_data);
 
-	_findclose(f_handel);
+	_findclose(f_handle);
 	return file_data;
 }
 
