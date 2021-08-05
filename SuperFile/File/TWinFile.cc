@@ -60,7 +60,27 @@ int TWinFile::createDir(const char* path)   {
 
 std::vector<std::string> TWinFile::getNamesUnderDir()   {
 	std::vector<std::string> subNames;
-	std::cout << "m_path: " << m_path << std::endl;
+	std::cout << "m_path: " << m_path;
+	if(isDir()) {
+		std::cout << " is Dir" << std::endl;
+		_finddata_t fileData;
+		int k;
+		long Handle;
+		formateDirName(m_path);
+		std::string queryPath = m_path + "*.*";
+		std::cout << "queryPath: " << queryPath << std::endl;
+		
+		k = Handle = _findfirst(queryPath.c_str(), &fileData);
+		while(k != -1) {
+			std::cout << "k = " << k << std::endl;
+			subNames.push_back(std::string(fileData.name));
+			k = _findnext(Handle, &fileData);
+			//_findclose(Handle);
+		}
+	} else {
+		std::cout << " is not Dir!" << std::endl;
+	}
+	/*
 	if(isDir()) {
 		_finddata_t file;
 		int k;
@@ -81,6 +101,8 @@ std::vector<std::string> TWinFile::getNamesUnderDir()   {
 	} else {
 		std::cout << "m_path: " << m_path << " is not a dir!" << std::endl;
 	}
+	*/
+	return subNames;
 	
 }
 

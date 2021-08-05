@@ -38,7 +38,7 @@ void test_getNamesUnderDir() {
 	for(auto iter : v_files) {
 		std::cout << iter << ", ";
 	}
-	std::cout << std::endl;
+	std::cout << "\nthat is the all!" << std::endl;
 }
 int main() {
 	std::cout << "Hello, Test_Base!" << std::endl;
