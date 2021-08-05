@@ -1,20 +1,14 @@
 #pragma once
 
 #include <iostream>
+#include <stdio.h>
 
 template<class _DataType>
 class Stack {
 public:
-	Stack(int stackLen = 32) {
-		m_stackLen = stackLen;
-		m_pStackRoom = (_DataType*)mallco(sizeof(_DataType) * m_stackLen);
-		m_stackTop = 0;
-	}
-	~Stack() { 
-		if(nullptr != m_pStackRoom) {
-			free(m_pStackRoom);
-		}
-	}
+	using DataType_t = _DataType;
+	Stack(int stackLen = 32);
+	~Stack();
 
 	//data: push to stack, return err -1, sucess 0
 	int push(_DataType data);

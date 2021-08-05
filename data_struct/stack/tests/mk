@@ -1,0 +1,5 @@
+#!/bin/bash
+
+g++ ../stack.cc test_stack.cc -o ./bin/stack.exe
+
+./bin/stack.exe
