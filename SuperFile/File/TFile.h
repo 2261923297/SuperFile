@@ -34,7 +34,6 @@ public:
 	//end must '/'
 	virtual int formateDirName(std::string& dirPath) = 0;
 
-
 protected:
 	std::string		m_path;
 };
