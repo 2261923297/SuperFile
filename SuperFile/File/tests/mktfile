@@ -1,0 +1,7 @@
+#!/bin/bash
+
+clear 
+
+g++ test_TFileStatic.cc -o ./bin/tFileStatic.exe
+
+./bin/tFileStatic.exe	

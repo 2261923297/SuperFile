@@ -1,4 +1,4 @@
-
+#pragma once
 #include "TFile.h"
 #include "platforms/win_file/WinFile.h"
 #include <io.h>
@@ -13,8 +13,9 @@ class TWinFile : public TFile {
 public:
 	typedef WinFile::FileData_t FileData_t;
 	typedef std::shared_ptr<TWinFile> ptr;
-	
-	TWinFile(const std::string& filePath) : TFile(filePath) {
+//	using DirSeparator = DIR_SEPARATOR;
+
+	TWinFile(const std::string& filePath = "C:\\") : TFile(filePath) {
 		m_fileData = getFileData();
 	}
 	~TWinFile() {
@@ -33,7 +34,7 @@ public:
 
 	int formateDirName(std::string& dirPath) override;
 
-
+	
 
 protected:
 	FileData_t getFileData() {
