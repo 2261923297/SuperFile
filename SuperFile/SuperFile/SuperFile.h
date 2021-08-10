@@ -1,6 +1,9 @@
 #pragma once 
 #include <memory>
-#include <std::string> 
+#include <string> 
+#include "../Net/TNet.h"
+#include "../File/TFile.h"
+#include "../File/TWinFile.h"
 
 class SuperFile {
 public:
@@ -8,25 +11,26 @@ public:
 	SuperFile();
 	virtual ~SuperFile();
 
-	virtual int initPromission();
+	int sendInit(const std::string& save_path = "");
 
-	virtual int init();
+	int recvInit(std::string& save_path);
+	
+	int sendFile(const std::string& file_path);
 
-	virtual int createFile();
+	int recvFile();
 
-	virtual int readAllFile();
+	TNet::SockDesc_t waitClient(const std::string& ip, const short port);
 
-	virtual int sendFile();
+	int searchServer(const std::string& ip, const short port);
 
-	virtual int recvFile();
 
 protected:
 	TFile::ptr m_file;
-	TLog::ptr m_log;
-	TNet::pt m_net;
+//	TLog::ptr m_log;
+	TNet::ptr  m_net;
 
-	Promission::ptr m_promission;
+//	Promission::ptr m_promission;
 private:
-
+	TNet::SockDesc_t m_sock;
 
 };

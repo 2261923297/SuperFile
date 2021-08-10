@@ -1,0 +1,35 @@
+
+[master]
+send show_all   [dir],       
+recv_file save_as [direct_dir]/ip/_show_all.txt
+
+
+send show_under [dir], 
+recv_file save_as [direct_dir]/ip/_show_under_dir
+		
+send get_file [far_path] [lo_path]  
+
+
+send_file [far_path] to [lo_path]
+
+
+[slaver]
+			recv
+			 |
+			 V
+	getCommand && getArgs
+			 |
+			 V
+		services_func
+		     |
+			 V
+		send_buffer(file)
+			 |
+			 V
+
+
+
+
+
+
+

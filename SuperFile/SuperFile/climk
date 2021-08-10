@@ -1,0 +1,14 @@
+#!/bin/bash
+
+clear
+
+g++		./client.cc \
+		./SuperFile.cc \
+		../File/TFile.cc \
+		../File/TWinFile.cc \
+		../Net/TNet.cc \
+		../File/platforms/win_file/WinFile.cc \
+-l ws2_32 \
+-o ../bin/client.exe
+
+#../bin/client.exe

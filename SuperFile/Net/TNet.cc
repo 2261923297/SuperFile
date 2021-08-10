@@ -1,7 +1,7 @@
 #include <iostream>
 #include <memory>
 #include <string>
-#include <winsock2.h>
+#include <Winsock2.h>
 #include "TNet.h"
 
 #include "../Buffer/Buffer.h"
@@ -31,8 +31,8 @@ int TNet::Bind(SockDesc_t sock, const char* ip_addr, short port) {
 	struct sockaddr_in addr;
 	memset(&addr, 0, sizeof(sockaddr_in));
 	addr.sin_family = AF_INET;
-	addr.sin_port = htons(8888);
-	addr.sin_addr.s_addr = inet_addr("127.0.0.1");
+	addr.sin_port = htons(port);
+	addr.sin_addr.s_addr = inet_addr(ip_addr);
 
 	int bindRet = bind(sock, (sockaddr*)&addr, sizeof(addr));
 	LOGOUT(bindRet == SOCKET_ERROR);
@@ -69,7 +69,7 @@ int TNet::Connect(TNet::SockDesc_t sock, const char* ip, short port) {
 
 	return connRet;
 }
-TNet::DataSize_t TNet::RecvData(TNet::SockDesc_t sock, void* buffer, int size){
+TNet::DataSize_t TNet::RecvData(TNet::SockDesc_t sock, const void* buffer, int size){
 	DataSize_t ans = 0;
 	int readSize = 0;
 	readSize = recv(sock, (char*)buffer, size, 0);
@@ -80,7 +80,7 @@ TNet::DataSize_t TNet::RecvData(TNet::SockDesc_t sock, void* buffer, int size){
 	ans = readSize;
 	return ans;
 }
-TNet::DataSize_t TNet::SendData(TNet::TNet::SockDesc_t sock, void* buffer, int size){
+TNet::DataSize_t TNet::SendData(TNet::TNet::SockDesc_t sock, const void* buffer, int size){
 
 	TNet::DataSize_t ans = 0;
 	int writeSize = send(sock, (char*)buffer, size, 0);
