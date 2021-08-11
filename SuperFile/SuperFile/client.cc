@@ -4,7 +4,7 @@
 int test_trans_file() {
 	int ans = 0;
 	SuperFile::ptr sf = SuperFile::ptr(new SuperFile);
-	if( -1 == sf->searchServer("192.168.60.24", 6666)) {
+	if( -1 == sf->searchServer("127.0.0.1", 6666)) {
 		std::cout << "cant search server!" << std::endl;
 		return -1;
 	}

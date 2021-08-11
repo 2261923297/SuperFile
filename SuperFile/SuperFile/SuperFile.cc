@@ -96,11 +96,16 @@ int SuperFile::sendFile(TNet::SockDesc_t sock, const std::string& file_path) {
 		nRead = fread(fileCar, 1, carSize, pFile_s);
 		fileCar[nRead] = '\0';
 		nSend = m_net->SendData(client_sock, fileCar, nRead);
+		if(nSend != carSize) {
+			std::cout << "nSend != carsize =  " << nSend << std::endl; 
+		}
 		memset(fileCar, 0, 1025);
 		//std::cout << "nSend = " << nSend << std::endl;
 		send_times++;
 	} while(nRead == carSize);
 	//close(client_sock);
+	std::cout << "end send = " << nSend << std::endl;
+	std::cout << "sendTimes = " << send_times << std::endl;
 	std::cout << "SendSize = " << (send_times - 1) * carSize + nSend << std::endl;
 	return ans;
 }
@@ -122,14 +127,20 @@ int SuperFile::recvFile(TNet::SockDesc_t sock, const std::string& save_path) {
 		std::cout << "can^t fopen file to write: " << save_path << std::endl;
 		return -1;
 	}
-
+	
+	int recv_times = 0;
 	do {
 		nRecv = m_net->RecvData(m_sock, fileCar, carSize);
 		nWrite = fwrite(fileCar, 1, nRecv, pFile_r);
 		recv_nums += nRecv;
+		recv_times++;
+
 		write_nums += write_nums;
-		std::cout << "nRecv = " << nRecv << std::endl;
+		if(nRecv != carSize) 
+			std::cout << "recv_time = " << recv_times << "nRecv = " << nRecv << std::endl;
+		
 	} while(nRecv != -1);
+	std::cout << "end_recv = " << nRecv << std::endl;
 	std::cout << "recv_nums = " << recv_nums << "  write_nums = " << write_nums << std::endl;
 	return ans;
 }
