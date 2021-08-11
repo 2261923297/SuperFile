@@ -1,8 +1,9 @@
 #include "SuperFile.h"
 #include <time.h>
 #include <string.h>
+#include <stdio.h>
 SuperFile::SuperFile() {
-	m_file = TFile::ptr(new TWinFile("C::\\"));
+	m_file = TFile::ptr(new TWinFile("C:\\"));
 	m_net = TNet::ptr(new TNet);
 
 	m_sock = TNet::Socket();
@@ -71,64 +72,49 @@ int SuperFile::recvInit(std::string& save_path) {
 	return ans;
 }
 
-int SuperFile::sendFile(const std::string& file_path) {
+int SuperFile::sendFile(TNet::SockDesc_t sock, const std::string& file_path) {
 	
 	int ans = 0;
-	ans = sendInit();
-	if(ans == -1) {
-		return ans;
-	}
+
 	std::cout << "begin send..." << std::endl;
 	FILE* pFile_s = fopen(file_path.c_str(), "rb+");	
 	if(nullptr == pFile_s) {
-		std::cout << "can^t open file: " << file_path << std::endl;
+		std::cout << "can^t open file: "
+ << file_path << std::endl;
 	}
+	fseek(pFile_s, 0, SEEK_SET);
 
 	int carSize = 1024;
 	char fileCar[1025] = { 0 };
-	int nSend = 0;
-	int nRead = 0;
+	memset(fileCar, 0, 1025);
+
+	int nSend = 0, nRead = 0;
 	
+	int send_times = 0;
 	TNet::SockDesc_t client_sock = m_sock;
 	do {
-		nRead = m_file->readData(fileCar, carSize, pFile_s);
+		nRead = fread(fileCar, 1, carSize, pFile_s);
 		fileCar[nRead] = '\0';
 		nSend = m_net->SendData(client_sock, fileCar, nRead);
 		memset(fileCar, 0, 1025);
-		std::cout << "nSend = " << nSend << std::endl;
+		//std::cout << "nSend = " << nSend << std::endl;
+		send_times++;
 	} while(nRead == carSize);
-
+	//close(client_sock);
+	std::cout << "SendSize = " << (send_times - 1) * carSize + nSend << std::endl;
 	return ans;
 }
 
-int SuperFile::recvFile() {
+int SuperFile::recvFile(TNet::SockDesc_t sock, const std::string& save_path) {
 	int ans = 0;
-	std::string save_path = "";
-	ans = recvInit(save_path);
-	if(ans == -1) {
-		return ans;
-	}
+
 	std::cout << "begin recv..." << std::endl;
 	int carSize = 1024;
 	char fileCar[1025] = { 0 };
-	int nRecv = 0;
-	int nWrite = 0;
-	if(save_path.size() == 0) {
-		time_t now = time(&now);
-		struct tm* info = localtime(&now);
+	int nRecv = 0, nWrite = 0, recv_nums = 0, write_nums = 0;
 
-		char fileName[128] = { 0 };
-		memset(fileName, 0, 128);
-		fileName[0] = 'r';
-		strftime(fileName + 1, 127, "%Y_%m_%d_%H_%M_%S", info);
-
-//		std::string fileName = "";
-
-	
-		save_path = std::string("D:\\SuperFile\\Recv\\");
-		m_file->createDir(save_path.c_str());
-		save_path = save_path + fileName + ".png";
-	}
+	std::string sp_parent = save_path.substr(0, save_path.find_last_of('\\'));
+	m_file->createDir(sp_parent.c_str());
 	m_file->createFile(save_path.c_str());
 
 	FILE* pFile_r = fopen(save_path.c_str(), "wb+");
@@ -139,10 +125,12 @@ int SuperFile::recvFile() {
 
 	do {
 		nRecv = m_net->RecvData(m_sock, fileCar, carSize);
-		nWrite = m_file->writeData(fileCar, nRecv, pFile_r);
+		nWrite = fwrite(fileCar, 1, nRecv, pFile_r);
+		recv_nums += nRecv;
+		write_nums += write_nums;
 		std::cout << "nRecv = " << nRecv << std::endl;
 	} while(nRecv != -1);
-
+	std::cout << "recv_nums = " << recv_nums << "  write_nums = " << write_nums << std::endl;
 	return ans;
 }
 

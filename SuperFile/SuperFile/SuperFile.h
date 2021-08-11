@@ -15,9 +15,9 @@ public:
 
 	int recvInit(std::string& save_path);
 	
-	int sendFile(const std::string& file_path);
+	int sendFile(TNet::SockDesc_t sock, const std::string& file_path);
 
-	int recvFile();
+	int recvFile(TNet::SockDesc_t sock, const std::string& save_path);
 
 	TNet::SockDesc_t waitClient(const std::string& ip, const short port);
 
