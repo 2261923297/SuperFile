@@ -8,7 +8,7 @@
 #include <memory>
 #include <direct.h>
 #include "platforms/win_file/WinFile.h"
-
+#include <stdint.h>
 
 
 class TFile {
@@ -20,6 +20,8 @@ public:
 	virtual ~TFile() {
 
 	}
+	
+	virtual uint64_t getFileSize() = 0;
 
 	virtual int isExit() = 0;
 
