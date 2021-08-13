@@ -1,0 +1,6 @@
+#!/bin/bash
+
+clear
+g++ FileBuffer.cc -o a.exe
+
+./a.exe
