@@ -29,6 +29,7 @@ public:
 
 	int createDir(const char* path) override;
 
+	uint64_t getFileSize() override;
 
 	std::vector<std::string> getNamesUnderDir() override;
 

@@ -1,6 +1,10 @@
 #include "TWinFile.h"
 
 
+uint64_t TWinFile::getFileSize() {
+	return m_fileData.size;
+}
+
 int TWinFile::isDir()   {
 	return _A_SUBDIR == m_fileData.attrib;
 }

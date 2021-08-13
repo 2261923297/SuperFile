@@ -4,12 +4,15 @@
 #include "../Net/TNet.h"
 #include "../File/TFile.h"
 #include "../File/TWinFile.h"
+#include <stdint.h>
 
 class SuperFile {
 public:
 	typedef std::shared_ptr<SuperFile> ptr;
 	SuperFile();
 	virtual ~SuperFile();
+	
+	TNet::SockDesc_t getSock() { return m_sock; }
 
 	int sendInit(const std::string& save_path = "");
 
