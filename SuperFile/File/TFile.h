@@ -7,7 +7,6 @@
 #include <stdio.h>
 #include <memory>
 #include <direct.h>
-#include "platforms/win_file/WinFile.h"
 #include <stdint.h>
 
 
@@ -32,15 +31,20 @@ public:
 	virtual int createDir(const char* path) = 0;
 
 	virtual std::vector<std::string> getNamesUnderDir() = 0;
+
 	
 	//end must '/'
 	virtual int formateDirName(std::string& dirPath) = 0;
+
+	virtual std::string getParent(const std::string& fileName = "") = 0;
 
 	static int readData(char* buffer, int size, FILE* file);
 
 	static int writeData(char* buffer, int size, FILE* file);
 
 	static int copyFile(const char* fromPath, const char* toPath);
+
+	
 protected:
 	std::string		m_path;
 };

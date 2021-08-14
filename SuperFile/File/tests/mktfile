@@ -2,6 +2,9 @@
 
 clear 
 
-g++ test_TFileStatic.cc -o ./bin/tFileStatic.exe
+g++ test_TFileStatic.cc \
+	../TFile.cc \
+	../TWinFile.cc \
+-o ./bin/tFileStatic.exe
 
 ./bin/tFileStatic.exe	

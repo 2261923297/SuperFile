@@ -1,8 +1,0 @@
-#!/bin/bash
-
-clear
-
-g++ ../WinFile.cc test_base.cc \
--o ../bin/testbase.exe
-
-../bin/testbase.exe

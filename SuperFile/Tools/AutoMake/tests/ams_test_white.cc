@@ -1,4 +1,4 @@
-#include "AutoMakeSolution.h"
+#include "../AutoMakeSolution.h"
 
 int test_construct() {
 	AutoMakeSolution::ptr amkP = AutoMakeSolution::ptr(new AutoMakeSolution("E:\\AutoMakeTest"));
@@ -8,10 +8,10 @@ int test_construct() {
 
 
 void test_add_init_run() {
-	AutoMakeSolution::ptr amkP = AutoMakeSolution::ptr(new AutoMakeSolution("E:\\AutoMakeTest"));
-
-	amkP->addProjectName("Logger");
-	amkP->addProjectName("Configer");
+	AutoMakeSolution::ptr amkP = AutoMakeSolution::ptr(new AutoMakeSolution);
+	
+	amkP->addProject("Logger");
+	amkP->addProject("Configer");
 
 	amkP->run();
  
@@ -21,7 +21,7 @@ void test_add_init_run() {
 int main() {
 	std::cout << "Hello, amk_test_white!" << std::endl;
 
-	test_construct();
+	//test_construct();
 
 	test_add_init_run();
 	return 0;
