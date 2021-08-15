@@ -4,7 +4,7 @@ clear
     
 g++ project.cc \
     test_project_white.cc \
--o ../bin/test_project_white.exe
+-o ../../bin/test_project_white.exe
     
-../bin/test_project_white.exe
+../../bin/test_project_white.exe
     

@@ -49,9 +49,9 @@ const std::vector<std::string> AutoMakeSrc::s_mk = {
 		, "    "
 		, "g++ %p.cc \\"
 		, "    test_%p_white.cc \\"
-		, "-o ../bin/test_%p_white.exe"
+		, "-o ../../bin/test_%p_white.exe"
 		, "    "
-		, "../bin/test_%p_white.exe"
+		, "../../bin/test_%p_white.exe"
 		, "    "
 
 };
