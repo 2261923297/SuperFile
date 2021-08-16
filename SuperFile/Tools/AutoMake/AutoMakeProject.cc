@@ -14,17 +14,19 @@ AutoMakeProject::~AutoMakeProject() {
 }
 
 int AutoMakeProject::initProjectFile() {
-	std::string headFile = m_projectName + ".h";
-	std::string srcFile = m_projectName + ".cc";
+	std::string headFile = getHeadPath();
+	std::string srcFile = getSrcPath();
 
-	std::string mkFile = "mk";
+	std::string mkFile = getMkPath();
+	std::string tBase = getTestPath();
 
 	m_files.clear();
+	m_files.push_back(tBase);
 	m_files.push_back(headFile);
 	m_files.push_back(srcFile);
 	m_files.push_back(mkFile);
 
-	return 3;
+	return 4;
 }
 
 

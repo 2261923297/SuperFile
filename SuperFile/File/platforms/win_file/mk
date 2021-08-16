@@ -1,8 +1,0 @@
-#!/bin/bash
-
-clear
-
-g++ WinFile.cc \
--o ./bin/winfile.exe
-
-./bin/winfile.exe

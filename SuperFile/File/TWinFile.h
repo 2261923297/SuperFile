@@ -1,6 +1,5 @@
 #pragma once
 #include "TFile.h"
-#include "platforms/win_file/WinFile.h"
 #include <io.h>
 #include <direct.h>
 #include <memory>
@@ -8,7 +7,24 @@
 #include <list>
 #include <vector>
 #include <stdio.h>
+#include <map>
+
 #define DIR_SEPARATOR '\\'
+
+class WinFile {
+public:
+	typedef struct _finddata_t FileData_t;
+
+	static FileData_t GetFileData(const char* path);
+
+	static FileData_t GetFileData(const std::string& path) { return GetFileData(path.c_str()); }
+
+	static void ShowFileData(const FileData_t& data);
+
+public:
+	static std::map<unsigned int, std::string> s_file_desc_mapper;
+};
+
 class TWinFile : public TFile {
 public:
 	typedef WinFile::FileData_t FileData_t;
@@ -28,6 +44,8 @@ public:
 	int createFile(const char* path) override;
 
 	int createDir(const char* path) override;
+
+	std::string getParent(const std::string& fileName = "") override;
 
 	uint64_t getFileSize() override;
 

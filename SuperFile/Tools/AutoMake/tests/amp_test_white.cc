@@ -1,4 +1,4 @@
-#include "AutoMakeProject.h"
+#include "../AutoMakeProject.h"
 
 void test_white() {
 	AutoMakeProject::ptr amp = AutoMakeProject::ptr(new AutoMakeProject("E:\\AutoMake\\SolutionDir\\", "Project"));
