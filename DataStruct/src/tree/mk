@@ -1,0 +1,10 @@
+#!/bin/bash
+    
+clear 
+    
+g++ tree.cc \
+    test_tree_white.cc \
+-o ../../bin/test_tree_white.exe
+    
+../../bin/test_tree_white.exe
+    
