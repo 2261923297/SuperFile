@@ -1,5 +1,5 @@
 #!/bin/bash 
  
  clear 
- AutoMake -p /c/SoftWare/Project/cpp/gitProject/SuperFile/DataStruct/src/ $1 
+ AutoMake -p /c/SoftWare/cpp/solutions/githubs/DataStruct/src/ $1 
 
