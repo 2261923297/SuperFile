@@ -1,0 +1,10 @@
+#!/bin/bash
+    
+clear 
+    
+g++ link.cc \
+    test_link_white.cc \
+-o ../../bin/test_link_white.exe
+    
+../../bin/test_link_white.exe
+    

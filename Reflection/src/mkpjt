@@ -1,0 +1,5 @@
+#!/bin/bash 
+ 
+ clear 
+ AutoMake -p /c/SoftWare/cpp/solutions/githubs/Reflection/src/ $1 
+

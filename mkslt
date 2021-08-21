@@ -1,6 +1,6 @@
 #!/bin/bash
 
-root_dir="/c/SoftWare/Project/cpp/gitProject/SuperFile/"
+root_dir="/c/SoftWare/cpp/solutions/githubs/"
 solution_dir=${root_dir}$1"/"
 project_dir=${solution_dir}"src/"
 mkpjt_file=${project_dir}"mkpjt"
