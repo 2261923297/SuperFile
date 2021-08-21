@@ -40,10 +40,10 @@ int test_trans_file(const std::string& filePath, const std::string& ip) {
 int main(int argc, char** argv) {
 	std::string file_path = "D:\\SuperFile\\send.exe";
 	std::string ip = "127.0.0.1";
-	if(argc > 2) {
+	if(argc >= 2) {
 		file_path = argv[1];
 	}
-	if(argc > 3) {
+	if(argc >= 3) {
 		ip = argv[2];
 	}
 	test_trans_file(file_path, ip);

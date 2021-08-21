@@ -10,4 +10,4 @@ g++ AutoMake.cc \
 	../AutoMakeSrc.cc \
 -o ../bin/AutoMake.exe
 
-../bin/AutoMake.exe -p  /e/projectSoft/cpp/githubs/SuperFile/Tools/AutoMake/AutoTools project
+../bin/AutoMake.exe 

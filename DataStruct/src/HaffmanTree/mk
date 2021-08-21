@@ -1,0 +1,10 @@
+#!/bin/bash
+    
+clear 
+    
+g++ HaffmanTree.cc \
+    test_HaffmanTree_white.cc \
+-o ../../bin/test_HaffmanTree_white.exe
+    
+../../bin/test_HaffmanTree_white.exe
+    

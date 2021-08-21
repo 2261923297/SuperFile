@@ -1,0 +1,10 @@
+#!/bin/bash
+    
+clear 
+    
+g++ graph.cc \
+    test_graph_white.cc \
+-o ../../bin/test_graph_white.exe
+    
+../../bin/test_graph_white.exe
+    
