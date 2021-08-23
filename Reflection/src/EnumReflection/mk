@@ -1,0 +1,10 @@
+#!/bin/bash
+    
+clear 
+    
+g++ EnumReflection.cc \
+    test_EnumReflection_white.cc \
+-o ../../bin/test_EnumReflection_white.exe
+    
+../../bin/test_EnumReflection_white.exe
+    

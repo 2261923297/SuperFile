@@ -1,40 +1,25 @@
-#include <iostream>
-#include <memory>
-
-template<class _DataType>
-class Node {
-public:
-	typedef std::shared_ptr<Node> ptr;
-	typedef _DataType data_t;
-	
-	virtual const data_t& getData() { return m_data; }
-	virtual void setData(const data_t& val) { m_data = val;	}
+#include "Node.h"
 
 
-protected:
-	data_t m_data;
-}; // Node
-
-template<class _DataType>
-class SinglyLinkNode : public Node<_DataType> {
-public:
-	typedef std::shared_ptr<data_t> data_ptr;
-	
-	const data_ptr& getDataPtr() { return m_next; }
-
-	void setDataPtr(const data_ptr& ptr) { m_next = ptr; }
-
-	void setDataPtr(data_t* val) { m_next.reset(val); }
-
-	
-
-protected:
-	data_ptr m_next;
-}; // SinglyLinkNode
-
+#define NODE_TYPE double
 
 int main() {
-	std::cout << "Hello, Node!" << std::endl;
-
+	NODE_TYPE node_size = 10.1 ;
+	LinkNode<NODE_TYPE>* head = LinkNode<NODE_TYPE>::NewNode(0);
+	LinkNode<NODE_TYPE>* tmp = head, *newNode = nullptr;
+	while(node_size-- > 0) {
+		newNode = LinkNode<NODE_TYPE>::NewNode(node_size);
+		tmp->setNext(newNode);
+		tmp = newNode;
+	}
+	std::cout << "init end" << std::endl;
+	tmp = head;
+	for(; node_size <10; node_size++) {
+		std::cout << tmp->getData() << ",";
+		tmp = tmp->getNext();
+	}
 	return 0;
 }
+
+
+

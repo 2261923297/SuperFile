@@ -1,0 +1,60 @@
+ 
+/*
+#ifndef ENUM_CLASS_NAME
+#  error Please define 'ENUM_CLASS_NAME'
+#endif
+
+#ifndef ENUM_BODY
+#  error Please define 'ENUM_MESSAGE'
+#endif
+
+#ifndef ENUM_VALUES
+#  error Please define 'ENUM_VALUES'
+#endif
+*/
+
+/*
+#include <iostream>
+
+class ENUM_CLASS_NAME {
+public:	
+#undef ENUM_MESSAGE
+#define ENUM_MESSAGE(name, ...) \
+	enum name {					\
+		__VA_ARGS__				\
+	};							\
+	//
+	ENUM_BODY
+};
+
+#undef xx
+static std::ostream& operator<<(std::ostream& os, ENUM_CLASS_NAME::ENUM_NAME _enum) {
+	switch(_enum) {
+#define xx(_enum_val) \
+		case ENUM_CLASS_NAME::ENUM_NAME::_enum_val: \
+			os << #_enum_val;					\
+			break;								\
+		//
+
+		ENUM_VALUES
+#undef xx
+	}
+
+	return os;
+}
+
+
+
+
+#undef ENUM_CLASS_NAME
+#undef ENUM_BODY
+#undef ENUM_VALUES
+
+
+#define message_could_out 0
+
+#if message_could_out
+#pragma message("ENUM_NAME && ENUM_BODY will be undef")
+#endif
+*/
+
